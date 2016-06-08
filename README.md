@@ -1,0 +1,1 @@
+Run 'python script_name' to pull csv data.
