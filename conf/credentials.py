@@ -1,0 +1,5 @@
+hostname = "developers.crittercism.com"
+username = "jkang@apteligent.com"
+password = "Moomoo908"
+oauthToken = "lgwKGaY1uTQbexeGIbHlp3e68EP2EHAp"
+metric_root = "apteligent" 
