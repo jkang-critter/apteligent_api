@@ -1,5 +1,5 @@
 hostname = "developers.crittercism.com"
-username = "jkang@apteligent.com"
-password = "Moomoo908"
-oauthToken = "lgwKGaY1uTQbexeGIbHlp3e68EP2EHAp"
+username = <YOUR_USERNAME>
+password = <YOUR_PASSWORD>
+oauthToken = <YOUR_OAUTHTOKEN>
 metric_root = "apteligent" 
