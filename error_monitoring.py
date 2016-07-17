@@ -20,7 +20,6 @@ def run_errorMonitoringGraph(appids):
 	for appId in appids:	
 		for metric in metrics:
 			appName = apps[appId]['appName']
-			path = [conf.credentials.metric_root, appName, 'daily', metric]
 			errorMon_data.append(instance.errorMonitoringGraph(appid=appId, metric=metric, duration=1440))
 
 	return errorMon_data
@@ -28,7 +27,11 @@ def run_errorMonitoringGraph(appids):
 with open('data_error.csv', 'w+') as output_file_error:
 	output_writer_error = csv.writer(output_file_error, dialect='excel')
 	data_error = run_errorMonitoringGraph(appids)
+	
+	#Write header row to Excel file
 	output_writer_error.writerow(['appID', 'Graph', 'Duration (in min)', 'Value'])
+	
+	#Go through each line in error monitoring data received and format data to write to row and individual cells in Excel file
 	for row in data_error:
 		appID = row['params']['appId']
 		graph = row['params']['graph']

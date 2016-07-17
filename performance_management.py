@@ -11,6 +11,7 @@ instance = apteligent.restapi.Client(conf.credentials.hostname, conf.credentials
 apps = instance.get_apps()
 appids = list(apps.keys())
 
+#Takes in a list of app IDs and returns the data after the performanceManagementPie call is made. Remove any metrics that are not of relevance from metrics.
 def run_performanceManagement(appids):
 	metrics = ['dataIn', 'dataOut', 'latency', 'volume', 'errors']
 	perf_data = []
@@ -28,7 +29,11 @@ def run_performanceManagement(appids):
 with open('data_perf.csv', 'w+') as output_file_perf:
 	output_writer_perf = csv.writer(output_file_perf, dialect='excel')
 	data_perf = run_performanceManagement(appids)
+	
+	#Write header row to Excel file
 	output_writer_perf.writerow(['appID', 'Graph', 'Duration (in min)', 'Group By', 'Service Name', 'Value', 'Label'])
+	
+	#Go through each line in Performance Management data and format 
 	for row in data_perf:
 		appID = row['params']['appIds']
 		graph = row['params']['graph']
